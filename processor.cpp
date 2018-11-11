@@ -3,6 +3,14 @@
 
 /** @file */
 
+/**
+* @brief Reads all specific byte-code for processor into chars array
+*
+* @param filename Pointer to the name of output assembler file with byte-code to be read
+* @param byte_code Pointer to pointer of byte array to be written with byte-code. Returned as function parameter.
+*
+* @return If byte-code was read successful then it returns zero and filled function parameter, else - special error code
+*/
 int ReadByteCode(char * filename, char ** byte_code) {
     FILE * inp_file;
 
@@ -30,22 +38,27 @@ int ReadByteCode(char * filename, char ** byte_code) {
     char * input_strs = (char *) malloc(inp_file_len);
     size_t read_res = fread(input_strs, 1, inp_file_len, inp_file);
 
-    /** If number of read elements in fread differs from input file length then:
-     *  - If it is positive number then some elements were read and function execution continues
-     *  - Else - there is some error then function returns an error code to main()
+    /** If number of read elements in fread differs from input file length then there is some error
      */
-    if ( (read_res != inp_file_len) && !read_res) {
+    if ( !read_res) {
         printf("Warning: no bytes were read from input file in fileread function\n");
         return ERR_PROC_READ;
     }
 
-    //!Fills file_strs to return it to ProccessByteCode(char * filename) function and close input file
+    //!Fills byte_code to return it to ProccessByteCode(char * filename) function and close input file
     *byte_code = input_strs;
     fclose(inp_file);
 
     return 0;
 }
 
+/**
+* @brief Processes input byte-code
+*
+* @param filename Pointer to the name of output assembler file with byte-code to be read
+*
+* @return If byte-code was processed successful then it returns zero, else - special error code
+*/
 int ProccessByteCode(char * filename) {
     int err_code = 0;
     char * byte_code = nullptr;

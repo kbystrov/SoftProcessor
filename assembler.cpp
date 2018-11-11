@@ -15,7 +15,10 @@
 int CreateByteCode(char * in_name, char * out_name) {
     FILE * asm_in;
     FILE * asm_out;
-    char buf[100] = {0};
+    char buf[10] = {0};
+    char rax[10] = {0};
+    bool psh_num_flg = false;
+    bool psh_rax_flg = false;
 
     if (in_name == nullptr){
         return ERR_ASM_IN;
@@ -41,24 +44,42 @@ int CreateByteCode(char * in_name, char * out_name) {
 
     //! Macro for auto-filling all commands
     #define CMD_DEF(name, num, code) \
-        if(strcmp(buf, #name) == 0){ \
+    if(strcmp(buf, #name) == 0){ \
         fprintf(asm_out, "%d", num); \
         }
 
-    /**Reading all symbols from pseudo-assebler code one by one
+    /**Reading all symbols from pseudo-assembler code one by one
      * - if it is command then macro is used to convert in into number, else if number - in standard way.
      */
-
     int value = 0;
     while( fscanf(asm_in, "%s", buf) != EOF){
 
-        #include "commands.h"
-
-        if ( fscanf(asm_in, "%d", &value) ){
-            fwrite(&value, sizeof(code_t), 1, asm_out);
-            //fprintf(asm_out, "%d ", value);
+        while (!strcmp(buf, "PUSH") || !strcmp(buf, "POP")) {
+            if (fscanf(asm_in, "%d", &value)) {
+                psh_num_flg = true;
+                break;
+            } else {
+                fscanf(asm_in, "%s", rax);
+                strcat(buf, "R");
+                psh_rax_flg = true;
+                break;
+            }
         }
 
+        #include "commands.h"
+
+        if (psh_num_flg){
+            fwrite(&value, sizeof(elem_t), 1, asm_out);
+            psh_num_flg = false;
+        } else if (psh_rax_flg) {
+            fwrite(&value, sizeof(elem_t), 1, asm_out);
+            psh_rax_flg = false;
+        }
+        /*
+        if ( fscanf(asm_in, "%d", &value) ){
+            fwrite(&value, sizeof(elem_t), 1, asm_out);
+        }
+        */
     }
 
     //!Undef macro for preventing possible mistakes
