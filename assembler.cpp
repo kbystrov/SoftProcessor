@@ -55,7 +55,7 @@ int CreateByteCode(char * in_name, char * out_name) {
         #include "commands.h"
 
         if ( fscanf(asm_in, "%d", &value) ){
-            fwrite(&value, sizeof(int), 1, asm_out);
+            fwrite(&value, sizeof(code_t), 1, asm_out);
             //fprintf(asm_out, "%d ", value);
         }
 

@@ -51,6 +51,8 @@ int ProccessByteCode(char * filename) {
     char * byte_code = nullptr;
     size_t instr_ptr = 0;
     int digit = 0;
+    Stack * stk = nullptr;
+    elem_t tmp_res = 0;
 
     if (filename == nullptr){
         return ERR_PROC_FILE;
@@ -66,7 +68,6 @@ int ProccessByteCode(char * filename) {
         return ERR_PROC_NULL_CODE;
     }
 
-    Stack * stk = nullptr;
     StackCtor(&stk, 100);
 
     #define CMD_DEF(name, num, code) \
@@ -89,6 +90,9 @@ int ProccessByteCode(char * filename) {
     }
 
     #undef CMD_DEF
+
+    free(byte_code);
+    StackDtor(stk);
 
     return 0;
 }
