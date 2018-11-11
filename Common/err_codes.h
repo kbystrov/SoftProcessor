@@ -1,8 +1,5 @@
 #ifndef ERR_CODES_H
 #define ERR_CODES_H
-
-#include <stdint.h>
-#include "SimpleStack/data_types.h"
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /** @file */

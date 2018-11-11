@@ -3,13 +3,13 @@
 
 #include <stddef.h>
 #include <math.h>
-#include "../err_codes.h"
+#include <stdint.h>
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /** @file */
 
 //! Value to be filled in not used elements of stack - for debug issues
-#define POISON tan(M_PI_2)
+#define POISON 777
 //! Guard value for saving other data in stack
 #define CANARY 666
 

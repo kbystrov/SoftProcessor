@@ -7,7 +7,7 @@
 #include <string.h>
 #include "data_types.h"
 #include "stack_tests.h"
-#include "../err_codes.h"
+#include "../Common/err_codes.h"
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /** @file */

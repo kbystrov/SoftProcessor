@@ -3,9 +3,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "err_codes.h"
-#include "SimpleStack/stack_utils.h"
-#include "assembler.h"
+#include "../Common/err_codes.h"
+#include "../Assembler/assembler.h"
+#include "../SimpleStack/stack_utils.h"
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /** @file */

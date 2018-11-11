@@ -67,10 +67,14 @@ int ProccessByteCode(char * filename) {
     Stack * stk = nullptr;
     elem_t tmp_res = 0;
 
+    //!@var Registers' array
+    elem_t regs[REG_NUM] = {0};
+
     if (filename == nullptr){
         return ERR_PROC_FILE;
     }
 
+    //! Reads byte code from input file to special byte array
     err_code = ReadByteCode(filename, &byte_code);
 
     if(err_code){
@@ -83,18 +87,20 @@ int ProccessByteCode(char * filename) {
 
     StackCtor(&stk, 100);
 
+    //!@def Is used to automatically change code for parsing input byte-code after adding new commands into "commands.h"
     #define CMD_DEF(name, num, code) \
     case CMD_##name : \
         code; \
         break;
 
+    //!Processing byte-code with commands from "commands.h" before EOF
     while (byte_code[instr_ptr] != EOF){
 
         digit = byte_code[instr_ptr] - '0';
 
         switch(digit){
 
-            #include "commands.h"
+            #include "../Common/commands.h"
 
             default:
                 break;

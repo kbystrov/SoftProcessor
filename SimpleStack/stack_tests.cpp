@@ -59,10 +59,10 @@ int StackDump(const Stack * stk) {
     }
 
     printf("Stack [%p]{\n", stk);
-    printf("   canary = %zd\n", stk->canary);
-    printf("   capacity = %zu\n", stk->capacity);
-    printf("   size = %zu\n", stk->size);
-    printf("   data[%zu] [%p]{\n", stk->size, stk->data);
+    printf("   canary = %d\n", stk->canary);
+    printf("   capacity = %u\n", stk->capacity);
+    printf("   size = %u\n", stk->size);
+    printf("   data[%u] [%p]{\n", stk->size, stk->data);
 
     if (err_code == ERR_OK_DATA){
         return err_code;
@@ -74,13 +74,13 @@ int StackDump(const Stack * stk) {
          *  in all stack elements after stack creation) then prints out also this info.
          */
         if (stk->data[i] != POISON){
-            printf("      [%zu]: [%zd]\n", i, stk->data[i]);
+            printf("      [%u]: [%d]\n", i, stk->data[i]);
         } else {
-            printf("      [%zu]: [%zd] - POISON!!!\n", i, stk->data[i]);
+            printf("      [%u]: [%d] - POISON!!!\n", i, stk->data[i]);
         }
     }
     printf("   }\n");
-    printf("   hash = %zd\n}\n", stk->hash);
+    printf("   hash = %d\n}\n", stk->hash);
 
     return err_code;
 }

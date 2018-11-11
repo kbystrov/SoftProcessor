@@ -1,5 +1,5 @@
-#include "assembler.h"
-#include "processor.h"
+#include "Assembler/assembler.h"
+#include "Processor/processor.h"
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 int main(int args, char * argv[]) {
