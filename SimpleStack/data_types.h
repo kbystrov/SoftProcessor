@@ -14,9 +14,9 @@
 #define CANARY 666
 
 //!@typedef Typedef for values of stack elements
-typedef ptrdiff_t elem_t;
+typedef int32_t elem_t;
 //!@typedef Typedef for sizes params of stack
-typedef size_t stk_size_t;
+typedef uint32_t stk_size_t;
 
 //!@typedef Typedef for Stack_str struct
 typedef struct Stack_str Stack;

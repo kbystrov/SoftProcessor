@@ -10,7 +10,7 @@
 /** @file */
 
 //!@typedef Type of numbers in byte-code
-typedef uint64_t code_t;
+typedef int32_t code_t;
 
 #define CMD_DEF(name, num, code) CMD_##name = num,
 
