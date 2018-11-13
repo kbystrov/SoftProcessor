@@ -13,12 +13,7 @@ CMD_DEF(SUB, 4, tmp_res = StackPop(stk,&err_code) - StackPop(stk,&err_code); Sta
 CMD_DEF(MUL, 5, StackPush(stk, StackPop(stk,&err_code) * StackPop(stk,&err_code)); instr_ptr++)
 CMD_DEF(DIV, 6, tmp_res = StackPop(stk,&err_code); StackPush(stk, StackPop(stk,&err_code) / tmp_res); instr_ptr++)
 CMD_DEF(OUT, 7, printf("OUT: %d\n", StackPop(stk, &err_code)); instr_ptr++)
-CMD_DEF(JA, 8, )
-CMD_DEF(JB, 9, )
-CMD_DEF(JE, 10, )
-CMD_DEF(JAE, 11, )
-CMD_DEF(JBE, 12, )
-CMD_DEF(JRE, 13, )
-CMD_DEF(PUSHR, 14, StackPush(stk, regs[byte_code[instr_ptr + 1] - '0' - 1]) ; instr_ptr += 2)
-CMD_DEF(POPR, 15, regs[byte_code[instr_ptr + 1] - '0' - 1] = StackPop(stk, &err_code); instr_ptr += 2)
+CMD_DEF(PUSHR, 8, StackPush(stk, regs[byte_code[instr_ptr + 1] - '0' - 1]) ; instr_ptr += 2)
+CMD_DEF(POPR, 9, regs[byte_code[instr_ptr + 1] - '0' - 1] = StackPop(stk, &err_code); instr_ptr += 2)
 
+#include "jumps.h"

@@ -70,4 +70,6 @@
 //! Error code: returned byte code pointer from ReadByteCode(char * filename, char * byte_code) is nullptr in ProccessByteCode(char * filename)
 #define ERR_PROC_NULL_CODE 28
 
+#define ERR_READ_LAB_IN 29
+
 #endif //ERR_CODES_H
