@@ -70,6 +70,27 @@
 //! Error code: returned byte code pointer from ReadByteCode(char * filename, char * byte_code) is nullptr in ProccessByteCode(char * filename)
 #define ERR_PROC_NULL_CODE 28
 
+//! Error code: input file is nullptr in ReadLabels(FILE * inp_file, Label ** lab_table, size_t * lab_count)
 #define ERR_READ_LAB_IN 29
+
+//! Error code: malloc returned nullptr in LabelTableCTor(Label ** lab_table, stk_size_t lab_num)
+#define ERR_LAB_TAB_CTOR 30
+
+//! Error code: input label array is nullptr in LabelTableDTor(Label * lab_table, stk_size_t lab_num)
+#define ERR_LAB_TAB_DTOR_NULL 31
+//! Error code: input number of labels is negative number in LabelTableDTor(Label * lab_table, stk_size_t lab_num)
+#define ERR_LAB_TAB_DTOR_NUM 32
+
+//! Error code: input label array is nullptr in LabelTableRLC(Label * lab_table, stk_size_t lab_num)
+#define ERR_LAB_TAB_RLC_NULL 33
+//! Error code: input number of labels is negative number in  LabelTableRLC(Label * lab_table, stk_size_t lab_num)
+#define ERR_LAB_TAB_RLC_NUM 34
+//! Error code: realloc returned nullptr in LabelTableRLC(Label * lab_table, stk_size_t lab_num) for Label Struct
+#define ERR_LAB_TAB_RLC_RLC_TAB 35
+//! Error code: realloc returned nullptr for label buffer of Label Struct in LabelTableRLC(Label * lab_table, stk_size_t lab_num) for Label
+#define ERR_LAB_TAB_RLC_RLC_LAB 36
+
+//! Error code: negative input for SQRT command
+#define ERR_NEG_SQRT 37
 
 #endif //ERR_CODES_H

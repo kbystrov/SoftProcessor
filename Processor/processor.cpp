@@ -94,7 +94,7 @@ int ProccessByteCode(char * filename) {
         break;
 
     //!Processing byte-code with commands from "commands.h" before EOF
-    while (byte_code[instr_ptr] != EOF){
+    while (byte_code[instr_ptr] != EOF) {
 
         digit = byte_code[instr_ptr] - '0';
 
@@ -106,6 +106,10 @@ int ProccessByteCode(char * filename) {
                 break;
         }
 
+        if(err_code){
+            return err_code;
+        }
+
     }
 
     #undef CMD_DEF
@@ -113,6 +117,6 @@ int ProccessByteCode(char * filename) {
     free(byte_code);
     StackDtor(stk);
 
-    return 0;
+    return err_code;
 }
 

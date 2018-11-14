@@ -14,4 +14,7 @@ ADD
 POP RAX
 JMP :2
 :stop
+IN
+SQRT
+OUT
 END

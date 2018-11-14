@@ -14,7 +14,7 @@
 #define CANARY 666
 
 //!@typedef Typedef for values of stack elements
-typedef int32_t elem_t;
+typedef float_t elem_t;
 //!@typedef Typedef for sizes params of stack
 typedef uint32_t stk_size_t;
 

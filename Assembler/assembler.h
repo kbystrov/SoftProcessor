@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include "../Common/err_codes.h"
 #include "../SimpleStack/stack_utils.h"
+#include "labels.h"
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /** @file */
@@ -43,22 +44,7 @@ const size_t JUMPS[] = {
 #undef CMD_DEF
 //********************************************************************************************************************
 
-//!@typedef Typedef for LabelStr struct
-typedef struct LabelStr Label;
-
-/**@brief  Label structure for jumps in code
- *
- * @param pos The address of label's position in code
- * @param label The name of label
- */
-struct LabelStr {
-    ptrdiff_t pos;
-    char * label;
-};
-
-int CreateLabelTable();
 int isJump(size_t x);
-int ReadLabels(FILE * inp_file, Label ** lab_table, size_t * lab_count);
 int CreateByteCode(char * in_name, char * out_name);
 
 #endif //ASSEMBLER_H

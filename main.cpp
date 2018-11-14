@@ -14,7 +14,11 @@ int main(int args, char * argv[]) {
 
     int err_code = CreateByteCode(argv[1], argv[2]);
 
-    ProccessByteCode(argv[2]);
+    if (err_code){
+        return err_code;
+    }
+
+    err_code = ProccessByteCode(argv[2]);
 
     return err_code;
 }
