@@ -19,4 +19,6 @@ CMD_DEF(IN, 11, scanf("%f", &tmp_res); StackPush(stk, tmp_res); instr_ptr++)
 
 #include "jumps.h"
 
+CMD_DEF(RET, 31, instr_ptr = StackPop(stkRet, &err_code) )
+
 CMD_DEF(END, 0, byte_code[instr_ptr + 1] = EOF; instr_ptr++)

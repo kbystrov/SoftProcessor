@@ -65,6 +65,7 @@ int ProccessByteCode(char * filename) {
     size_t instr_ptr = 0;
     int digit = 0;
     Stack * stk = nullptr;
+    Stack * stkRet = nullptr;
     elem_t tmp_res = 0;
 
     //!@var Registers' array
@@ -86,6 +87,7 @@ int ProccessByteCode(char * filename) {
     }
 
     StackCtor(&stk, 100);
+    StackCtor(&stkRet, 100);
 
     //!@def Is used to automatically change code for parsing input byte-code after adding new commands into "commands.h"
     #define CMD_DEF(name, num, code) \
@@ -115,6 +117,7 @@ int ProccessByteCode(char * filename) {
     #undef CMD_DEF
 
     free(byte_code);
+    StackDtor(stkRet);
     StackDtor(stk);
 
     return err_code;
