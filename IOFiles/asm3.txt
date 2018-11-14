@@ -4,6 +4,7 @@ POP RAX
 CALL :f
 CALL :t
 POP RAX
+CALL :fake
 PUSH 11
 PUSH RAX
 JB :2

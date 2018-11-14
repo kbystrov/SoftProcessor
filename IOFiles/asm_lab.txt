@@ -1,0 +1,6 @@
+PUSH 10
+PUSH 1
+ADD
+OUT
+CALL :t
+END

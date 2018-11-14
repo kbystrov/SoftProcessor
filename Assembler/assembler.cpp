@@ -36,6 +36,7 @@ int CreateByteCode(char * in_name, char * out_name) {
     elem_t value = 0;
     char buf[15] = {0};
     char rax[10] = {0};
+    char lab_buf[100] = {0};
     bool psh_num_flg = false;
     bool psh_rax_flg = false;
     size_t i = 0;
@@ -69,17 +70,21 @@ int CreateByteCode(char * in_name, char * out_name) {
         return err_code;
     }
 
-    //!@def Is used to automatically change code for parsing input commands after adding new commands into "commands.h" and "jumps.h"
+    /**@def Is used to automatically change code for parsing input commands after adding new commands into "commands.h" and "jumps.h".
+     * Also verifies if label has position in code and only after that writes this jump command and label
+     */
     #define CMD_DEF(name, num, code) \
     if(strcmp(buf, #name) == 0){ \
-        fprintf(asm_out, "%c", num + '0'); \
         if(isJump(num)){ \
-            fscanf(asm_in, "%s", buf); \
+            fscanf(asm_in, "%s", lab_buf); \
             for (i = 0; i < lab_count; i++) { \
-                if(strcmp(buf+1,lab_table[i].label) == 0){ \
+                if(strcmp(lab_buf+1,lab_table[i].label) == 0 && lab_table[i].pos != LAB_POISON){ \
+                    fprintf(asm_out, "%c", num + '0'); \
                     fwrite(&lab_table[i].pos, sizeof(label_t), 1, asm_out); \
                 } \
             } \
+        } else { \
+            fprintf(asm_out, "%c", num + '0'); \
         } \
     }
 

@@ -87,6 +87,7 @@ int ProccessByteCode(char * filename) {
     }
 
     StackCtor(&stk, 100);
+    //!Separate stack for storing return addresses for RET command - is used for returning from function called with CALL command
     StackCtor(&stkRet, 100);
 
     //!@def Is used to automatically change code for parsing input byte-code after adding new commands into "commands.h"
@@ -113,7 +114,7 @@ int ProccessByteCode(char * filename) {
         }
 
     }
-
+    //!Undef macro for preventing possible mistakes
     #undef CMD_DEF
 
     free(byte_code);
