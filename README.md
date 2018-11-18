@@ -11,6 +11,8 @@ Common/ - global error codes, commands for Processor, registers
 
 IOFiles/ - the container for saving pseduo-assembler programs to be executed and output byte-code
 
+
+
 To run program use SoftCommon in the following way:
 ./SoftCommon $inp_file $out_file
 
