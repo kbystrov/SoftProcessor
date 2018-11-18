@@ -15,4 +15,5 @@ To run program use SoftCommon in the following way:
 ./SoftCommon $inp_file $out_file
 
 $inp_file - path to input file with pseudo-assembler code
+
 $out_file - path to output file with byte-code to be processed
